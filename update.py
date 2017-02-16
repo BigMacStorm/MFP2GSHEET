@@ -26,3 +26,20 @@ sh.update_cell("C"+str(1+dayOffset.days), mfpData.totals['carbohydrates'])
 sh.update_cell("D"+str(1+dayOffset.days), mfpData.totals['fat'])
 sh.update_cell("E"+str(1+dayOffset.days), mfpData.totals['protein'])
 
+#Calculate streak on keto
+test = sh.cell((1+dayOffset.days,3))
+streak = 0
+it = 0
+print(test.value)
+print(1+dayOffset.days-it)
+print((test.value <=20) and (1+dayOffset.days-it >1))
+print(int(test.value) <=20)
+print(1+dayOffset.days-it >1)
+while((int(test.value) <=20) and (1+dayOffset.days-it >1)):
+    print(test.value)
+    streak += 1
+    it += 1
+    test = sh.cell((1+dayOffset.days-it,3))
+
+sh.update_cell((55,12), streak)
+
